@@ -1,0 +1,23 @@
+{
+  "name": "caverns_and_critters",
+  "version": "0.0.1",
+  "description": "Parody of another popular RPG.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treytomes/caverns_and_critters.git"
+  },
+  "keywords": [
+    "roguelike",
+    "game"
+  ],
+  "author": "Trey Tomes",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/treytomes/caverns_and_critters/issues"
+  },
+  "homepage": "https://github.com/treytomes/caverns_and_critters#readme"
+}
