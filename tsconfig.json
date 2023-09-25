@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+		"baseUrl": "./src",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+		"module": "ESNext",
+    "moduleResolution": "node",
+		"outDir": "./dist",
+    "resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": true,
+		"target": "ESNext"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -4,7 +4,13 @@
   "description": "Parody of another popular RPG.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "build": "webpack build",
+    "clean": "make clean",
+    "format": "prettier --write **/*.ts",
+    "lint": "eslint **/*.ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "start": "webpack server --open",
+    "test": "jest",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -19,5 +25,32 @@
   "bugs": {
     "url": "https://github.com/treytomes/caverns_and_critters/issues"
   },
-  "homepage": "https://github.com/treytomes/caverns_and_critters#readme"
+  "homepage": "https://github.com/treytomes/caverns_and_critters#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.4",
+    "@types/lodash": "^4.14.198",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.49.0",
+    "html-webpack-plugin": "^5.5.3",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "prettier": "^3.0.3",
+    "ts-jest": "^29.1.1",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
+    "wasm-loader": "^1.3.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "css-loader": "^6.8.1",
+    "image-js": "^0.35.4",
+    "jest": "^29.7.0",
+    "lodash": "^4.17.21",
+    "style-loader": "^3.3.3",
+    "text-loader": "^0.0.1",
+    "twgl.js": "^5.3.0"
+  }
 }
