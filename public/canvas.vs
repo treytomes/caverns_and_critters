@@ -1,15 +1,13 @@
 #version 300 es
 precision highp float;
 
-#define SCREEN_WIDTH 256.0
-#define SCREEN_HEIGHT 224.0 // SNES aspect ratio 8:7
-
 in vec4 position;
 out vec2 v_texcoord;
+uniform vec2 target_screen_size;
 uniform vec2 actual_screen_size;
 
 void main() {
-  float aspectRatio = SCREEN_WIDTH / SCREEN_HEIGHT;
+  float aspectRatio = target_screen_size.x / target_screen_size.y;
   float heightFromWidth = actual_screen_size.x / aspectRatio;
   float widthFromHeight = actual_screen_size.y * aspectRatio;
 
