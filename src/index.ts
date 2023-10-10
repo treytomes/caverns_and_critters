@@ -26,15 +26,23 @@ const SCREEN_STRIDE = SCREEN_WIDTH * SCREEN_BPP
 const PIXELS = new Uint8Array(SCREEN_STRIDE * SCREEN_HEIGHT)
 let context: SystemContext
 
+const getOffset = (x: number, y: number) => (y * SCREEN_WIDTH + x) * SCREEN_BPP
+
+const setPixel = (x: number, y: number, color: { r: number, g: number, b: number }) => {
+  const offset = getOffset(x, y)
+  PIXELS[offset + 0] = color.r
+  PIXELS[offset + 1] = color.g
+  PIXELS[offset + 2] = color.b
+}
+
 const render = () => {
   for (let y = 0; y < SCREEN_HEIGHT; y++) {
     for (let x = 0; x < SCREEN_WIDTH; x++) {
-      const index = (y * SCREEN_WIDTH + x) * SCREEN_BPP;
-      PIXELS[index] = x ^ y;
-      PIXELS[index + 1] = x & y;
-      PIXELS[index + 2] = x | y;
+      setPixel(x, y, { r: x ^ y, g: x & y, b: x | y })
     }
   }
+  
+  setPixel(100, 100, { r: 255, g: 255, b: 0 })
 }
 
 let lastUpdateTime = 0

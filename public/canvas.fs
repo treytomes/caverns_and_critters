@@ -14,11 +14,6 @@ uniform sampler2D render_texture;
 uniform float time;
 uniform vec2 target_screen_size;
 
-uniform float u_useCurveRemap;
-uniform float u_useScanlines;
-uniform float u_useBloom;
-uniform float u_useVignette;
-
 vec4 get_color(vec2 pos) {
   //return vec4(1, 0, 0, 1);
   return texture(render_texture, pos);
@@ -59,12 +54,14 @@ float mod_i(float a, float b) {
 }
 
 vec4 scanlines(vec2 pos, vec4 color) {
-	#define SPEED 0.25
-	//#define SPEED 4096.0
-  float seconds = time * 0.00004f; // / SPEED;
-  float y = (pos.y + seconds) * target_screen_size.y;
+  float delta = time * 0.0000005f;
+  float y = pos.y * target_screen_size.y;
 
-  color *= (mod_i(y, 2.0f) < 0.001f) ? 0.75f : 1.0f;
+  color *= (sin((delta + pos.y) * target_screen_size.y * 4.0f) + 1.0f) / 2.0f * 0.5f + 0.5f;
+
+  if(int(y * 2.0f) % 2 == 0) {
+    color *= 0.9f;
+  }
 
   color.a = 1.0f;
 
@@ -105,6 +102,6 @@ void main() {
 
   outColor = get_color(pos);
   outColor = scanlines(pos, outColor);
-  outColor = bloom(outColor, pos);
+  //outColor = bloom(outColor, pos);
   outColor *= vignette_intensity(pos);
 }
