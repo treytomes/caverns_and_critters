@@ -69,7 +69,7 @@ vec4 scanlines(vec2 pos, vec4 color) {
 }
 
 vec4 bloom(vec4 color, vec2 pos) {
-	#define GLOW_FACTOR 0.9
+	#define GLOW_FACTOR 0.5
 	#define ORIGIN_WEIGHT 0.1
 
   float dx = 1.0f / target_screen_size.x / 2.0f;
@@ -102,6 +102,6 @@ void main() {
 
   outColor = get_color(pos);
   outColor = scanlines(pos, outColor);
-  //outColor = bloom(outColor, pos);
+  outColor = bloom(outColor, pos);
   outColor *= vignette_intensity(pos);
 }
